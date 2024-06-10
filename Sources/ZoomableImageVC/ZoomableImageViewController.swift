@@ -67,7 +67,7 @@ public class ZoomableImageViewController: UIViewController {
         
         if navigationController == nil {
             let closeButton = UIButton()
-            closeButton.setTitle("Close", for: .normal)
+            closeButton.setTitle(String(localized: "close", defaultValue: "Close"), for: .normal)
             closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
             view.addSubview(closeButton)
             closeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ public class ZoomableImageViewController: UIViewController {
                 closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16.0)
             ])
         } else {
-            let leftBarButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeButtonTapped))
+            let leftBarButton = UIBarButtonItem(title: String(localized: "close", defaultValue: "Close"), style: .plain, target: self, action: #selector(closeButtonTapped))
             leftBarButton.tintColor = closeButtonTintColor
             navigationItem.leftBarButtonItem = leftBarButton
         }
