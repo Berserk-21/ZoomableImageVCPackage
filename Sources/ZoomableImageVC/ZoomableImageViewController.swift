@@ -18,7 +18,7 @@ public class ZoomableImageViewController: UIViewController {
     
     // MARK: - Life Cycle
     
-    init(image: UIImage) {
+    public init(image: UIImage) {
         self.image = image
         super.init(nibName: nil, bundle: nil)
     }
