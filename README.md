@@ -51,4 +51,4 @@ Xcode 15.0+
 Contributions are welcome! Please open an issue or submit a pull request for any bug fixes or feature requests.
 
 ### Licence
-ZoomableImageVCPackage is available under the MIT license. See the LICENSE file for more information.
+ZoomableImageVCPackage is available under the MIT license.
