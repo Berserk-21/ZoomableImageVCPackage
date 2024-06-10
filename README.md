@@ -36,7 +36,7 @@ In the Swift files where you want to use ImageViewScrollingPackage, import the p
 
 ```swift
 // Initialize with your own image.
-guard let testImage = UIImage(named: "testImage) else { return }
+guard let testImage = UIImage(named: "testImage") else { return }
 
 let vc = ZoomableImageViewController(image: testImage)
 vc.modalPresentationStyle = .fullScreen
