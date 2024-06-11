@@ -30,6 +30,7 @@ final class ZoomableImageView: UIScrollView {
 
         setupLayout()
         setupPanGesture()
+        setupDoubleTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -180,6 +181,41 @@ extension ZoomableImageView {
         default:
             break
         }
+    }
+}
+
+// MARK: - UITapGesture Methods
+
+extension ZoomableImageView {
+    
+    private func setupDoubleTapGesture() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+        
+        let scrollViewSize = bounds.size
+            
+        // Determine the position of the tap
+        let tapPoint = gesture.location(in: imageView)
+        
+        // Calculate the new zoom scale
+        let newZoomScale: CGFloat = zoomScale == minimumZoomScale ? maximumZoomScale : minimumZoomScale
+        
+        // Calculate the size of the zoomed area
+        let width = scrollViewSize.width / newZoomScale
+        let height = scrollViewSize.height / newZoomScale
+        
+        // Calculate the new content offset to center the tapped point
+        let offsetX = tapPoint.x - (width / 2.0)
+        let offsetY = tapPoint.y - (height / 2.0)
+        
+        // Create a rectangle then zoom into, prevent negative offsets.
+        let zoomRect = CGRect(x: max(offsetX, 0), y: max(offsetY, 0), width: width, height: height)
+        zoom(to: zoomRect, animated: true)
     }
 }
 
